@@ -1,0 +1,65 @@
+{
+  "HALProvider": {
+    "Other Devices": {
+      "SPARK MAX [8]": {
+        "header": {
+          "open": true
+        }
+      },
+      "navX-Sensor[0]": {
+        "header": {
+          "open": true
+        }
+      }
+    }
+  },
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/SmartDashboard/Auto Mode": "String Chooser",
+      "/SmartDashboard/Autonomous Command": "Command",
+      "/SmartDashboard/Drive": "Command",
+      "/SmartDashboard/DriveTrain": "Subsystem",
+      "/SmartDashboard/DriverOrientedDrive": "Command",
+      "/SmartDashboard/RobotOrientedDrive": "Command",
+      "/SmartDashboard/ToggleOrientedDrive": "Command",
+      "/SmartDashboard/Xbox Button X": "Command"
+    }
+  },
+  "NetworkTables": {
+    "transitory": {
+      "FMSInfo": {
+        "open": true
+      },
+      "Shuffleboard": {
+        "open": true
+      },
+      "SmartDashboard": {
+        "Drive": {
+          "open": true
+        },
+        "DriveTrain": {
+          "open": true
+        },
+        "RobotOrientedDrive": {
+          "open": true
+        },
+        "ToggleOrientedDrive": {
+          "open": true
+        },
+        "Xbox Button X": {
+          "open": true
+        },
+        "open": true
+      }
+    }
+  },
+  "NetworkTables Info": {
+    "Clients": {
+      "open": true
+    },
+    "shuffleboard": {
+      "open": true
+    }
+  }
+}
