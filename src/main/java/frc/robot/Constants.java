@@ -34,6 +34,12 @@ public class Constants {
     *   public static final int kRightMotor2Port = 3; 
     * }
     */ 
+
+    public static final class LEDConstants {
+      public static final int PWMPort = 0;
+      public static final int LEDCount = 60;
+  }
+
     public static final class DriveConstants {
         // Driving Parameters - Note that these are not the maximum capable speeds of
         // the robot, rather the allowed maximum speeds
