@@ -19,15 +19,20 @@
     }
   },
   "Window": {
+    "###Addressable LEDs": {
+      "Collapsed": "0",
+      "Pos": "154,56",
+      "Size": "142,238"
+    },
     "###FMS": {
       "Collapsed": "0",
       "Pos": "8,576",
-      "Size": "169,184"
+      "Size": "175,184"
     },
     "###Joysticks": {
       "Collapsed": "0",
       "Pos": "230,316",
-      "Size": "796,234"
+      "Size": "796,90"
     },
     "###NetworkTables": {
       "Collapsed": "0",

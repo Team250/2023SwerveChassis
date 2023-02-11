@@ -16,11 +16,27 @@
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
+      "/SmartDashboard/Arm": "Subsystem",
+      "/SmartDashboard/ArmToHighNode": "Command",
+      "/SmartDashboard/ArmToHybridNode": "Command",
+      "/SmartDashboard/ArmToMidNode": "Command",
       "/SmartDashboard/Auto Mode": "String Chooser",
       "/SmartDashboard/Autonomous Command": "Command",
+      "/SmartDashboard/CloseArm": "Command",
       "/SmartDashboard/Drive": "Command",
       "/SmartDashboard/DriveTrain": "Subsystem",
       "/SmartDashboard/DriverOrientedDrive": "Command",
+      "/SmartDashboard/LED": "Subsystem",
+      "/SmartDashboard/LED's Purple": "Command",
+      "/SmartDashboard/LED's Yellow": "Command",
+      "/SmartDashboard/LimeLight Auto Center": "Command",
+      "/SmartDashboard/LimeLight Auto Center Left": "Command",
+      "/SmartDashboard/LimeLight Auto Center Right": "Command",
+      "/SmartDashboard/Lock Left Right Drive": "Command",
+      "/SmartDashboard/Lock Rotation": "Command",
+      "/SmartDashboard/LockDriveLeftRight": "Command",
+      "/SmartDashboard/LowerArm": "Command",
+      "/SmartDashboard/OpenArm": "Command",
       "/SmartDashboard/RobotOrientedDrive": "Command",
       "/SmartDashboard/ToggleOrientedDrive": "Command",
       "/SmartDashboard/Xbox Button X": "Command"
@@ -28,7 +44,10 @@
   },
   "NetworkTables": {
     "transitory": {
-      "FMSInfo": {
+      "CameraPublisher": {
+        "LimeLight": {
+          "open": true
+        },
         "open": true
       },
       "Shuffleboard": {
@@ -41,6 +60,9 @@
         "DriveTrain": {
           "open": true
         },
+        "Lock Left Right Drive": {
+          "open": true
+        },
         "RobotOrientedDrive": {
           "open": true
         },
@@ -48,6 +70,12 @@
           "open": true
         },
         "Xbox Button X": {
+          "open": true
+        },
+        "open": true
+      },
+      "photonvision": {
+        "HP_TrueVision_HD_Camera": {
           "open": true
         },
         "open": true

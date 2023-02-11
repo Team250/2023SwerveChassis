@@ -17,6 +17,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import com.pathplanner.lib.auto.PIDConstants;
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -35,6 +36,11 @@ public class Constants {
     * }
     */ 
 
+    public static final class LimeLightConstants {
+      public static final double HORAZONTAL_OFFSET = 0;
+      public static final double VERTICAL_OFFSET = 0;
+    }
+
     public static final class LEDConstants {
       public static final int PWMPort = 0;
       public static final int LEDCount = 60;
@@ -45,12 +51,22 @@ public class Constants {
         // the robot, rather the allowed maximum speeds
         public static final double kMaxSpeedMetersPerSecond = 4.8;
         public static final double kMaxAngularSpeed = 2 * Math.PI; // radians per second
-    
+
+        /* Custom PID Controllers */
+        public static final PIDConstants robotRotationPID = new PIDConstants(0.1, 0, 0.00005);
+        public static final PIDConstants targetRotationPID = new PIDConstants(6, 0, 0.05);
+        public static final PIDConstants targetTranslationPID = new PIDConstants(4, 0, 0.005);
+        
         // Chassis configuration
         public static final double kTrackWidth = Units.inchesToMeters(18);
         // Distance between centers of right and left wheels on robot
         public static final double kWheelBase = Units.inchesToMeters(27.5);
         // Distance between front and back wheels on robot
+
+        public static final double kDirectionSlewRate = 1.2; // radians per second
+        public static final double kMagnitudeSlewRate = 1.8; // percent per second (1 = 100%)
+        public static final double kRotationalSlewRate = 2.0; // percent per second (1 = 100%)
+
         public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
             new Translation2d(kWheelBase / 2, kTrackWidth / 2),
             new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
@@ -132,6 +148,7 @@ public class Constants {
     
       public static final class OIConstants {
         public static final int kDriverControllerPort = 0;
+        public static final double kDriveDeadband = 0.20;
       }
     
       public static final class AutoConstants {
