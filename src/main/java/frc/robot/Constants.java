@@ -47,6 +47,20 @@ public class Constants {
   }
 
     public static final class DriveConstants {
+      public static final double kStabilizationP = 1;
+      public static final double kStabilizationI = 0.5;
+      public static final double kStabilizationD = 0;
+
+      public static final double kTurnP = 1;
+      public static final double kTurnI = 0;
+      public static final double kTurnD = 0;
+
+      public static final double kMaxTurnRateDegPerS = 100;
+      public static final double kMaxTurnAccelerationDegPerSSquared = 300;
+
+      public static final double kTurnToleranceDeg = 5;
+      public static final double kTurnRateToleranceDegPerS = 10; // degrees per second
+
         // Driving Parameters - Note that these are not the maximum capable speeds of
         // the robot, rather the allowed maximum speeds
         public static final double kMaxSpeedMetersPerSecond = 4.8;

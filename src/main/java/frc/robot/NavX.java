@@ -25,6 +25,12 @@ public class NavX {
 	public float getYaw() {
 		return -imu.getYaw();
 	}
+	public float getPitch() {
+		return imu.getPitch();
+	}
+	public float getRoll() {
+		return imu.getRoll();
+	}
 	
 	public double getRate() {
 		return imu.getRate();

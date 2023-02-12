@@ -116,6 +116,8 @@ public class DriveTrain extends SubsystemBase {
         // This method will be called once per scheduler run
         SmartDashboard.putNumber("Gyro Rate", m_gyro.getRate());
         SmartDashboard.putNumber("Gyro Yaw", m_gyro.getYaw());
+        SmartDashboard.putNumber("Gyro Pitch", m_gyro.getPitch());
+        SmartDashboard.putNumber("Gyro Roll", m_gyro.getRoll());
         SmartDashboard.putBoolean("Is Calibrating", m_gyro.isCalibrating());
         SmartDashboard.putBoolean("Field Oriented", getFieldOriented());
         // Update the odometry in the periodic block
@@ -127,7 +129,7 @@ public class DriveTrain extends SubsystemBase {
                 m_rearLeft.getPosition(),
                 m_rearRight.getPosition()
             });
-        
+        m_field.setRobotPose(m_odometry.getPoseMeters());
   
     }
 
