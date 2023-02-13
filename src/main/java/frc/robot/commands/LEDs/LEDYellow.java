@@ -58,6 +58,7 @@ public class LEDYellow extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        xboxcontroller.setRumble(RumbleType.kRightRumble, 0);
         xboxcontroller.setRumble(RumbleType.kLeftRumble, 1.0);
         m_lED.setColor(255, 255, 0);
     }
