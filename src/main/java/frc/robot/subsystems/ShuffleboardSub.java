@@ -77,4 +77,22 @@ public class ShuffleboardSub extends SubsystemBase {
         }
         Shuffleboard.update();
     }
+    
+    public void LLShuffleboard() {
+        try {
+        Shuffleboard.getTab("LimeLight")
+        .add(SendableCameraWrapper.wrap("LLCamera", "http://10.2.50.26:5800"))
+        .withWidget(BuiltInWidgets.kCameraStream)
+        .withPosition(2, 0)
+        .withSize(5, 5);
+        Shuffleboard.selectTab(3);
+        }
+        catch (Exception e) {
+        }
+        Shuffleboard.update();
+    }
+
+    public void shuffleboardMain() {
+        Shuffleboard.selectTab(3);
+    }
 }

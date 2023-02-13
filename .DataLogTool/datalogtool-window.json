@@ -6,8 +6,8 @@
       "style": "0",
       "userScale": "2",
       "width": "925",
-      "xpos": "-1",
-      "ypos": "-1"
+      "xpos": "157",
+      "ypos": "94"
     }
   },
   "Window": {
@@ -18,8 +18,8 @@
     },
     "Download": {
       "Collapsed": "0",
-      "Pos": "0,250",
-      "Size": "375,260"
+      "Pos": "0,145",
+      "Size": "375,365"
     },
     "Entries": {
       "Collapsed": "0",

@@ -58,7 +58,7 @@ public class Constants {
       public static final double kMaxTurnRateDegPerS = 100;
       public static final double kMaxTurnAccelerationDegPerSSquared = 300;
 
-      public static final double kTurnToleranceDeg = 5;
+      public static final double kTurnToleranceDeg = 1;
       public static final double kTurnRateToleranceDegPerS = 10; // degrees per second
 
         // Driving Parameters - Note that these are not the maximum capable speeds of
