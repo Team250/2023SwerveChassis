@@ -2,9 +2,10 @@ package frc.robot.commands.Drives;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.LimeLight;
 
 public class AutoBalance extends CommandBase {
-
+    private boolean isFinished = false;
     private final DriveTrain m_driveTrain;
 
     public AutoBalance(DriveTrain subsystem) {
@@ -21,7 +22,11 @@ public class AutoBalance extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-
+        if (m_driveTrain.onSlope()){
+            m_driveTrain.setDrive(0, 0, 0, true, false);
+            isFinished = true;
+            return;
+        }
     }
 
 
@@ -34,7 +39,7 @@ public class AutoBalance extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     @Override

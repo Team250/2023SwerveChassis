@@ -35,7 +35,7 @@ public class TurnToAngle extends PIDCommand {
         ,OIConstants.kDriveDeadband),
         MathUtil.applyDeadband(-RobotContainer.getInstance().getXboxController1().getLeftX()
         ,OIConstants.kDriveDeadband),
-        output/100,true,true),
+        output/DriveConstants.kLLRotationalSpeed,true,false),
         // Require the drive
         drive);
 

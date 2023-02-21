@@ -63,6 +63,9 @@ public class Constants {
 
       public static final double kLL_LR_Offset = 23;
       public static final double kLL_Fwd_Offset = 13;
+      public static final double kLLTransitionalSpeed = 150; // amount to divide the output by to slow the robot
+      public static final double kLLRotationalSpeed = 100;
+
 
         // Driving Parameters - Note that these are not the maximum capable speeds of
         // the robot, rather the allowed maximum speeds
@@ -165,8 +168,8 @@ public class Constants {
     
       public static final class OIConstants {
         public static final int kDriverControllerPort = 0;
-        public static final double kDriveDeadband = 0.20;
-        public static final double kTurnDeadband = 0.20;
+        public static final double kDriveDeadband = 0.06;
+        public static final double kTurnDeadband = 0.06;
       }
     
       public static final class AutoConstants {

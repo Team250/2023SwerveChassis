@@ -59,8 +59,9 @@ public class LLAutoCenterRight extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-      m_driveTrain.setDrive((LimeLight.getYCoord()+DriveConstants.kLL_Fwd_Offset)/100,
-      (-LimeLight.getXCoord()-DriveConstants.kLL_LR_Offset)/150,0,true,true);
+      m_driveTrain.setDrive((LimeLight.getYCoord()+DriveConstants.kLL_Fwd_Offset)/DriveConstants.kLLTransitionalSpeed,
+      (-LimeLight.getXCoord()-DriveConstants.kLL_LR_Offset)/DriveConstants.kLLTransitionalSpeed,0,
+      true,false);
     }
 
     // Called once the command ends or is interrupted.

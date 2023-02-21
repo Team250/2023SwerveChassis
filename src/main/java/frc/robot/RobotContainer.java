@@ -185,6 +185,10 @@ private final XboxController xboxController1 = new XboxController(0);
 // xboxButtonA.onTrue(new LEDGyro( m_lED ).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
 // SmartDashboard.putData("Lock Rotation",new LEDGyro( m_lED ));
 
+final JoystickButton xboxButtonA = new JoystickButton(xboxController1, XboxController.Button.kA.value);        
+xboxButtonA.onTrue(new AutoBalance( m_driveTrain ).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+// SmartDashboard.putData("Lock Rotation",new LEDGyro( m_lED ));
+
 final JoystickButton xboxButtonY = new JoystickButton(xboxController1, XboxController.Button.kY.value); //Dpad up
 xboxButtonY.whileTrue(new SequentialCommandGroup(new TurnToAngle(0,m_driveTrain), new LLAutoCenter(m_driveTrain)).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
     // SmartDashboard.putData("LimeLight Auto Center",new LLAutoCenter(0,m_driveTrain ));

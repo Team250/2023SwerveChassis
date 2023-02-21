@@ -78,6 +78,7 @@ public class DriveTrain extends SubsystemBase {
   // The gyro sensor
   //private final ADIS16470_IMU m_gyro = new ADIS16470_IMU();
   private final NavX m_gyro = new NavX();
+  private final double pitch = m_gyro.getPitch();
 
   // Slew rate filter variables for controlling lateral acceleration
   private double m_currentRotation = 0.0;
@@ -334,6 +335,10 @@ public class DriveTrain extends SubsystemBase {
     m_frontRight.setDesiredState(swerveModuleStates[1]);
     m_rearLeft.setDesiredState(swerveModuleStates[2]);
     m_rearRight.setDesiredState(swerveModuleStates[3]);
+  }
+
+  public boolean onSlope() {
+    return pitch < -7 || pitch > 7;
   }
 
 
