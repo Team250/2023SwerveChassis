@@ -58,8 +58,11 @@ public class Constants {
       public static final double kMaxTurnRateDegPerS = 100;
       public static final double kMaxTurnAccelerationDegPerSSquared = 300;
 
-      public static final double kTurnToleranceDeg = 1;
-      public static final double kTurnRateToleranceDegPerS = 10; // degrees per second
+      public static final double kTurnToleranceDeg = 2;
+      public static final double kTurnRateToleranceDegPerS = 1; // degrees per second
+
+      public static final double kLL_LR_Offset = 23;
+      public static final double kLL_Fwd_Offset = 13;
 
         // Driving Parameters - Note that these are not the maximum capable speeds of
         // the robot, rather the allowed maximum speeds
