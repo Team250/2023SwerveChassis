@@ -9,10 +9,14 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.robot.subsystems.LimeLight;
+import frc.robot.RobotContainer;
+import edu.wpi.first.math.MathUtil;
+import frc.robot.Constants.OIConstants;
 
 /** A command that will turn the robot to the specified angle. */
 public class TurnToAngle extends PIDCommand {
   /**
+   * 
    * Turns to robot to the specified angle.
    *
    * @param targetAngleDegrees The angle to turn to
@@ -26,7 +30,12 @@ public class TurnToAngle extends PIDCommand {
         // Set reference to target
         targetAngleDegrees,
         // Pipe output to turn robot
-        output -> drive.setDrive(0,-LimeLight.getXCoord()/100, output/100,true,true),
+        output -> drive.setDrive(
+        MathUtil.applyDeadband(-RobotContainer.getInstance().getXboxController1().getLeftY()
+        ,OIConstants.kDriveDeadband),
+        MathUtil.applyDeadband(-RobotContainer.getInstance().getXboxController1().getLeftX()
+        ,OIConstants.kDriveDeadband),
+        output/100,true,true),
         // Require the drive
         drive);
 

@@ -15,9 +15,13 @@ package frc.robot.subsystems;
 import java.util.Random;
 import java.util.Random.*;
 import java.util.concurrent.TimeUnit;
+import edu.wpi.first.math.geometry.Rotation2d;
+import frc.robot.NavX;
+import java.lang.Math;
 
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -32,6 +36,7 @@ import edu.wpi.first.wpilibj.util.Color;
  *
  */
 public class LED extends SubsystemBase {
+    private final NavX m_gyro = new NavX();
     private AddressableLED ledController;
     private AddressableLEDBuffer ledBuffer;
     private boolean m_LedState = false;
@@ -112,21 +117,31 @@ public class LED extends SubsystemBase {
         ledController.setData(ledBuffer);
     }
 
-    public void random() {
-        for (var i = 0; i< ledBuffer.getLength();i++) {
-            Random random = new Random();
-            final int r = (random.nextInt(255));
-            final int g = (random.nextInt(255));
-            final int b = (random.nextInt(255));
+    public double getHeading() {
+        return Rotation2d.fromDegrees(m_gyro.getYaw()).getDegrees();
+    }
 
-            ledBuffer.setRGB(i, r, g, b);
+    public void gyroColor(double gyroAngle) {
+        double angle = 0;
+        double angle2 = 0;
+        if (gyroAngle < 0){
+            angle = 360 + gyroAngle;
+            angle2 = angle-180;
+        }else{
+            angle = gyroAngle;
+            angle2 = angle + 180;
+        }
+        for (var i = 0; i< ledBuffer.getLength();i++) {
+            double iAngle = i*(360/ledBuffer.getLength());
+            if (iAngle > angle -50 && iAngle < angle +50){
+                ledBuffer.setRGB(i, 255, 0, 0);
+            }else if (iAngle > angle2 -50 && iAngle < angle2 +50){
+                ledBuffer.setRGB(i, 0, 255, 0);
+            }else{
+                ledBuffer.setRGB(i, 255, 255, 255);
+            }
         }
         ledController.setData(ledBuffer);
-        try {
-            TimeUnit.MILLISECONDS.sleep(200);
-        } catch (InterruptedException e) {
-
-        }
     }
 
     public void teamColors() {

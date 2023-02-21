@@ -27,7 +27,7 @@ public class LLAutoCenter extends PIDCommand {
         // Close loop on heading
         drive::getHeading,
         // Set reference to target
-        targetAngleDegrees,
+        targetAngleDegrees+drive.getFieldOffsetAngle(),
         // Pipe output to turn robot
         output -> drive.setDrive(0,-LimeLight.getXCoord()/100, output/100,true,true),
         // Require the drive
