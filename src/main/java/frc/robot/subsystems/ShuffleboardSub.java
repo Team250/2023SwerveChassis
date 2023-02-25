@@ -62,8 +62,8 @@ public class ShuffleboardSub extends SubsystemBase {
         .withSize(3, 3);
         Shuffleboard.getTab("Automated")
         .add("LL tx: ", LimeLight.getXCoord())
-        .withPosition(0, 1);
-        // .getEntry();
+        .withPosition(0, 1)
+        .getEntry();
         Shuffleboard.getTab("Automated")
         .add("LL ty: ", LimeLight.getYCoord())
         .withPosition(0, 2)

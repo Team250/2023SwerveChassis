@@ -60,11 +60,11 @@ public class Drive extends CommandBase {
     public void execute() {
         //For Xbox Controller
         m_driveTrain.setDrive(
-        MathUtil.applyDeadband(-RobotContainer.getInstance().getXboxController1().getLeftY()
+        MathUtil.applyDeadband(-RobotContainer.getInstance().getdriverController().getLeftY()
          * m_driveTrain.getDriveLockLR(),OIConstants.kDriveDeadband), 
-        MathUtil.applyDeadband(-RobotContainer.getInstance().getXboxController1().getLeftX()
+        MathUtil.applyDeadband(-RobotContainer.getInstance().getdriverController().getLeftX()
          * m_driveTrain.getDriveLockFR(),OIConstants.kDriveDeadband), 
-        MathUtil.applyDeadband(-RobotContainer.getInstance().getXboxController1().getRightX()
+        MathUtil.applyDeadband(-RobotContainer.getInstance().getdriverController().getRightX()
          * m_driveTrain.getRotationLock(), OIConstants.kTurnDeadband), 
         m_driveTrain.getFieldOriented(),false); //Not robot oriented drive, field oriented
         SmartDashboard.putNumber("Drive LR Lock Value", m_driveTrain.getDriveLockLR());

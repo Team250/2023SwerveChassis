@@ -31,9 +31,9 @@ public class TurnToAngle extends PIDCommand {
         targetAngleDegrees,
         // Pipe output to turn robot
         output -> drive.setDrive(
-        MathUtil.applyDeadband(-RobotContainer.getInstance().getXboxController1().getLeftY()
+        MathUtil.applyDeadband(-RobotContainer.getInstance().getdriverController().getLeftY()
         ,OIConstants.kDriveDeadband),
-        MathUtil.applyDeadband(-RobotContainer.getInstance().getXboxController1().getLeftX()
+        MathUtil.applyDeadband(-RobotContainer.getInstance().getdriverController().getLeftX()
         ,OIConstants.kDriveDeadband),
         output/DriveConstants.kLLRotationalSpeed,true,false),
         // Require the drive

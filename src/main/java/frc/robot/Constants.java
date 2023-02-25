@@ -172,7 +172,15 @@ public class Constants {
         public static final double kTurnDeadband = 0.06;
       }
     
-      public static final class AutoConstants {
+      public static final class AutoConstants { 
+        public static final double kDrivingP = .8;
+        public static final double kDrivingI = 0;
+        public static final double kDrivingD = .3;
+        
+        public static final double kTurningP = .8;
+        public static final double kTurningI = 0;
+        public static final double kTurningD = .3;
+
         public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
         public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
