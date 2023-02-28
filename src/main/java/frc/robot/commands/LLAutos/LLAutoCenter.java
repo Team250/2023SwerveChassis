@@ -62,8 +62,12 @@ public class LLAutoCenter extends CommandBase {
     @Override
     public void execute() {
     m_shuffle.LLShuffleboard();
-      m_driveTrain.setDrive((LimeLight.getYCoord()+DriveConstants.kLL_Fwd_Offset)/DriveConstants.kLLTransitionalSpeed,
-      -LimeLight.getXCoord()/DriveConstants.kLLTransitionalSpeed,0,true,false);
+    if (LimeLight.isTag() == 1){
+      m_driveTrain.setDrive(
+        // (LimeLight.getYCoord()+DriveConstants.kLL_Fwd_Offset)/DriveConstants.kLLTransitionalSpeed,
+      0,
+        LimeLight.getXCoord()/DriveConstants.kLLTransitionalSpeed,0,true,false);
+        }
     }
 
     // Called once the command ends or is interrupted.
@@ -76,7 +80,12 @@ public class LLAutoCenter extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
+        if (LimeLight.getXCoord() < DriveConstants.kLL_Tolerance && LimeLight.getXCoord() > -DriveConstants.kLL_Tolerance){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override

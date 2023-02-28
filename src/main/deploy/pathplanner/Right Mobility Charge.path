@@ -7,20 +7,18 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.633703267406535,
-        "y": 0.3093046186092369
+        "x": 3.6239829188066253,
+        "y": 0.47323157258121396
       },
-      "holonomicAngle": -178.5653949670843,
+      "holonomicAngle": 180.0,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
       "isStopPoint": false,
       "stopEvent": {
-        "names": [
-          "Arm up"
-        ],
+        "names": [],
         "executionBehavior": "parallel",
-        "waitBehavior": "minimum",
+        "waitBehavior": "none",
         "waitTime": 6.0
       }
     },
@@ -91,7 +89,7 @@
       "isStopPoint": false,
       "stopEvent": {
         "names": [
-          "Auto Balance"
+          "AutoBalance"
         ],
         "executionBehavior": "parallel",
         "waitBehavior": "none",
@@ -106,7 +104,8 @@
     {
       "position": 0.16363636363636186,
       "names": [
-        "Arm down"
+        "ArmDown",
+        "CloseArm"
       ]
     }
   ]

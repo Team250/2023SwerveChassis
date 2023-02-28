@@ -3,11 +3,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.LimeLight;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class AutoBalance extends CommandBase {
     private boolean isFinished = false;
     private final DriveTrain m_driveTrain;
-
+    
     public AutoBalance(DriveTrain subsystem) {
 
         m_driveTrain = subsystem;
@@ -23,7 +24,7 @@ public class AutoBalance extends CommandBase {
     @Override
     public void execute() {
         if (m_driveTrain.onSlope()){
-            m_driveTrain.setDrive(0, 0, 0, true, false);
+            m_driveTrain.setDrive(m_driveTrain.getPitch(), 0, 0, true, false);
             isFinished = true;
             return;
         }
@@ -39,7 +40,7 @@ public class AutoBalance extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return isFinished;
+        return true;
     }
 
     @Override

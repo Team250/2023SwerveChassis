@@ -17,7 +17,10 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import java.util.HashMap;
+import edu.wpi.first.wpilibj2.command.Command;
 import com.pathplanner.lib.auto.PIDConstants;
+import frc.robot.subsystems.*;
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -61,8 +64,9 @@ public class Constants {
       public static final double kTurnToleranceDeg = 2;
       public static final double kTurnRateToleranceDegPerS = 1; // degrees per second
 
-      public static final double kLL_LR_Offset = 23;
+      public static final double kLL_LR_Offset = 20;
       public static final double kLL_Fwd_Offset = 13;
+      public static final double kLL_Tolerance = 4;
       public static final double kLLTransitionalSpeed = 150; // amount to divide the output by to slow the robot
       public static final double kLLRotationalSpeed = 100;
 
@@ -162,7 +166,7 @@ public class Constants {
     
         // public static final int kDrivingMotorCurrentLimit = 50; // amps
         // public static final int kTurningMotorCurrentLimit = 20; // amps
-        public static final int kDrivingMotorCurrentLimit = 5; // amps
+        public static final int kDrivingMotorCurrentLimit = 7; // amps
         public static final int kTurningMotorCurrentLimit = 5; // amps
       }
     
@@ -173,13 +177,13 @@ public class Constants {
       }
     
       public static final class AutoConstants { 
-        public static final double kDrivingP = .8;
+        public static final double kDrivingP = .04;
         public static final double kDrivingI = 0;
-        public static final double kDrivingD = .3;
+        public static final double kDrivingD = 0;
         
-        public static final double kTurningP = .8;
+        public static final double kTurningP = 1;
         public static final double kTurningI = 0;
-        public static final double kTurningD = .3;
+        public static final double kTurningD = 0;
 
         public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
@@ -190,6 +194,7 @@ public class Constants {
         public static final double kPYController = 1;
         public static final double kPThetaController = 1;
     
+        
         // Constraint for the motion profiled robot angle controller
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints = new TrapezoidProfile.Constraints(
             kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);

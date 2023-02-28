@@ -40,7 +40,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.wpilibj.DriverStation;
 import com.pathplanner.lib.server.PathPlannerServer;
-
+import edu.wpi.first.wpilibj.Servo;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -55,12 +55,15 @@ public class Robot extends TimedRobot {
 
     private RobotContainer m_robotContainer;
 
+    private Servo m_servo;
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     @Override
     public void robotInit() {
+        m_servo = new Servo(1);
         DataLogManager.logNetworkTables(true);
         DataLogManager.start();
         DriverStation.startDataLog(DataLogManager.getLog());
@@ -136,6 +139,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
+        m_servo.setAngle(90);
     }
 
     @Override
