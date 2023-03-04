@@ -1,12 +1,15 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.Constants.LimeLightConstants;
 import edu.wpi.first.cameraserver.CameraServer;
+import frc.robot.subsystems.DriveTrain;
+import frc.common.math.MathUtils;
 
 public class LimeLight extends SubsystemBase {
   /** Creates a new LimeLight. */
@@ -16,8 +19,21 @@ public class LimeLight extends SubsystemBase {
   private NetworkTableEntry ta = table.getEntry("ta");
   private NetworkTableEntry tv = table.getEntry("tv");
 
+  private static final double Tag_Height = Units.inchesToMeters(26.5);
+  private static final double LL_Height = Units.inchesToMeters(17.5);
+  private static final double LL_Angle = Math.toRadians(34.0);
+  private static final double Tag_Error = Math.toRadians(2.5);
 
-  public LimeLight() {
+  private final DriveTrain m_drivetrain;
+
+  private double theta;
+  private boolean shooterHasTargets = false;
+  private double distanceToTarget = Double.NaN;
+  private double angleToTarget = Double.NaN;
+
+
+  public LimeLight(DriveTrain driveTrain) {
+    this.m_drivetrain = driveTrain;
     /**
      * tx - Horizontal Offset
      * ty - Vertical Offset 
@@ -35,6 +51,15 @@ public class LimeLight extends SubsystemBase {
 
   @Override
   public void periodic() {
+
+    boolean hasTarget = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0) > 0.5;
+
+    double pitch = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
+    double yaw = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+
+    theta = Math.toRadians(pitch) + LL_Angle;
+    distanceToTarget = (Tag_Height - LL_Height) / Math.tan(theta);
+    angleToTarget = m_drivetrain.getPose().getRotation().getRadians() + Math.toRadians(yaw);
     // This method will be called once per scheduler run
 
      //read values periodically
@@ -48,6 +73,32 @@ public class LimeLight extends SubsystemBase {
     SmartDashboard.putNumber("LimelightY", y);
     SmartDashboard.putNumber("LimelightArea", area);
 
+  }
+
+  public boolean isOnTarget() {
+    shooterHasTargets = shooterHasTargets();
+      if (shooterHasTargets) {
+          double delta = angleToTarget - m_drivetrain.getPose().getRotation().getRadians();
+          if (delta > Math.PI) {
+              delta = 2.0 * Math.PI - delta;
+          }
+
+          return MathUtils.epsilonEquals(delta, 0, Tag_Error);
+      } else {
+          return false;
+      }
+    }
+
+  public boolean shooterHasTargets() {
+    return NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0) > 0.5;
+  }
+
+  public double getDistanceToTarget() {
+    return distanceToTarget;
+  }
+
+  public double getAngleToTarget() {
+      return angleToTarget;
   }
 
   public static double getXCoord(){

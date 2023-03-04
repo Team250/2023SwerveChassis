@@ -1,11 +1,14 @@
 {
   "HALProvider": {
-    "Other Devices": {
-      "SPARK MAX [8]": {
-        "header": {
-          "open": true
-        }
+    "Addressable LEDs": {
+      "0": {
+        "start": 2
       },
+      "window": {
+        "visible": true
+      }
+    },
+    "Other Devices": {
       "navX-Sensor[0]": {
         "header": {
           "open": true
@@ -16,6 +19,7 @@
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
+      "/Shuffleboard/Autonomous/SendableChooser[0]": "String Chooser",
       "/SmartDashboard/Arm": "Subsystem",
       "/SmartDashboard/ArmToHighNode": "Command",
       "/SmartDashboard/ArmToHybridNode": "Command",
@@ -26,6 +30,7 @@
       "/SmartDashboard/Drive": "Command",
       "/SmartDashboard/DriveTrain": "Subsystem",
       "/SmartDashboard/DriverOrientedDrive": "Command",
+      "/SmartDashboard/Field": "Field2d",
       "/SmartDashboard/LED": "Subsystem",
       "/SmartDashboard/LED's Purple": "Command",
       "/SmartDashboard/LED's Yellow": "Command",
@@ -38,6 +43,8 @@
       "/SmartDashboard/LowerArm": "Command",
       "/SmartDashboard/OpenArm": "Command",
       "/SmartDashboard/RobotOrientedDrive": "Command",
+      "/SmartDashboard/ShuffleboardSub": "Subsystem",
+      "/SmartDashboard/Toggle Slew": "Command",
       "/SmartDashboard/ToggleOrientedDrive": "Command",
       "/SmartDashboard/Xbox Button X": "Command"
     }
@@ -51,9 +58,21 @@
         "open": true
       },
       "Shuffleboard": {
+        "Autonomous": {
+          "SendableChooser[0]": {
+            "open": true
+          },
+          "open": true
+        },
         "open": true
       },
       "SmartDashboard": {
+        "Auto Mode": {
+          "open": true
+        },
+        "Autonomous Command": {
+          "open": true
+        },
         "Drive": {
           "open": true
         },

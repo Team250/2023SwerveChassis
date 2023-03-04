@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.SendableCameraWrapper;
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.NetworkTable;
@@ -50,28 +51,24 @@ public class ShuffleboardSub extends SubsystemBase {
     public ShuffleboardSub() {
         Shuffleboard.getTab("Automated");
         Shuffleboard.selectTab(2);
+
+        ShuffleboardTab tab = Shuffleboard.getTab("Automated");
+        tab.add(SendableCameraWrapper.wrap("LLCamera", "http://10.2.50.26:5800"))
+        .withWidget(BuiltInWidgets.kCameraStream)
+        .withPosition(2, 0)
+        .withSize(3, 3);
+        tab.addNumber("LL tx", () -> LimeLight.getXCoord())
+        .withPosition(0, 1);
+        tab.addNumber("LL ty", () -> LimeLight.getYCoord())
+        .withPosition(0, 2);
+        tab.addNumber("LL ts", () -> LimeLight.getTs())
+        .withPosition(0, 1);
     }
 
     @Override
     public void periodic() {
         try {
-        Shuffleboard.getTab("Automated")
-        .add(SendableCameraWrapper.wrap("LLCamera", "http://10.2.50.26:5800"))
-        .withWidget(BuiltInWidgets.kCameraStream)
-        .withPosition(2, 0)
-        .withSize(3, 3);
-        Shuffleboard.getTab("Automated")
-        .add("LL tx: ", LimeLight.getXCoord())
-        .withPosition(0, 1)
-        .getEntry();
-        Shuffleboard.getTab("Automated")
-        .add("LL ty: ", LimeLight.getYCoord())
-        .withPosition(0, 2)
-        .getEntry();
-        Shuffleboard.getTab("Automated")
-        .add("LL ts: ", LimeLight.getTs())
-        .withPosition(0, 3)
-        .getEntry();
+        
         }
         catch (Exception e) {
         }

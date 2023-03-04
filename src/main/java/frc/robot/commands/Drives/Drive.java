@@ -60,7 +60,8 @@ public class Drive extends CommandBase {
     public void execute() {
         //For Xbox Controller
         m_driveTrain.setDrive(
-        MathUtil.applyDeadband(-RobotContainer.getInstance().getdriverController().getLeftY() * (2*RobotContainer.getInstance().getdriverController().getLeftTriggerAxis()) //Variable speed from pulling trigger, needs testing
+        //Variable speed from pulling trigger, needs testing
+        MathUtil.applyDeadband(-RobotContainer.getInstance().getdriverController().getLeftY() * (2*RobotContainer.getInstance().getdriverController().getLeftTriggerAxis()) 
          * m_driveTrain.getDriveLockLR(),OIConstants.kDriveDeadband), 
         MathUtil.applyDeadband(-RobotContainer.getInstance().getdriverController().getLeftX() * (2*RobotContainer.getInstance().getdriverController().getLeftTriggerAxis())
          * m_driveTrain.getDriveLockFR(),OIConstants.kDriveDeadband), 
@@ -70,25 +71,11 @@ public class Drive extends CommandBase {
         SmartDashboard.putNumber("Drive LR Lock Value", m_driveTrain.getDriveLockLR());
         SmartDashboard.putNumber("Drive FR Lock Value", m_driveTrain.getDriveLockFR());
         SmartDashboard.putNumber("Rotation Lock Value", m_driveTrain.getRotationLock());
-
-        // //For Joystick
-        // m_driveTrain.setDrive(
-        // MathUtil.applyDeadband(-RobotContainer.getInstance().getJoystick1().getY()
-        //  * m_driveTrain.getDriveLockLR(),OIConstants.kDriveDeadband), 
-        // MathUtil.applyDeadband(-RobotContainer.getInstance().getJoystick1().getX()
-        //  * m_driveTrain.getDriveLockFR(),OIConstants.kDriveDeadband), 
-        // MathUtil.applyDeadband(-RobotContainer.getInstance().getJoystick1().getTwist()
-        //  * m_driveTrain.getRotationLock(), OIConstants.kDriveDeadband), 
-        // m_driveTrain.getFieldOriented(),m_driveTrain.getSlew()); //Not robot oriented drive, field oriented
-        // SmartDashboard.putNumber("Drive LR Lock Value", m_driveTrain.getDriveLockLR());
-        // SmartDashboard.putNumber("Drive FR Lock Value", m_driveTrain.getDriveLockFR());
-        // SmartDashboard.putNumber("Rotation Lock Value", m_driveTrain.getRotationLock());
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        // m_driveTrain.setDrive(0.0, 0.0, 0.0,m_driveTrain.getFieldOriented());
     }
 
     // Returns true when the command should end.

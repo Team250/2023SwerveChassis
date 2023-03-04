@@ -19,6 +19,8 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import java.util.HashMap;
 import edu.wpi.first.wpilibj2.command.Command;
+
+import com.pathplanner.lib.PathPlannerTrajectory.EventMarker;
 import com.pathplanner.lib.auto.PIDConstants;
 import frc.robot.subsystems.*;
 /**
@@ -30,6 +32,7 @@ import frc.robot.subsystems.*;
  * constants are needed, to reduce verbosity.
  */
 public class Constants {
+  
    /**
     * public static final class DriveConstants {
     *   public static final int kLeftMotor1Port = 0;
@@ -104,15 +107,17 @@ public class Constants {
         public static final double kBackRightChassisAngularOffset = Math.PI / 2;
     
         // SPARK MAX CAN IDs
-        public static final int kFrontLeftDrivingCanId = 8;
-        public static final int kRearLeftDrivingCanId = 4;
-        public static final int kFrontRightDrivingCanId = 5;
-        public static final int kRearRightDrivingCanId = 1;
+        public static final int kFrontLeftDrivingCanId = 1;
+        public static final int kRearLeftDrivingCanId = 5;
+        public static final int kFrontRightDrivingCanId = 3;
+        public static final int kRearRightDrivingCanId = 7;
     
-        public static final int kFrontLeftTurningCanId = 7;
-        public static final int kRearLeftTurningCanId = 3;
-        public static final int kFrontRightTurningCanId = 6;
-        public static final int kRearRightTurningCanId = 2;
+        public static final int kFrontLeftTurningCanId = 2;
+        public static final int kRearLeftTurningCanId = 6;
+        public static final int kFrontRightTurningCanId = 4;
+        public static final int kRearRightTurningCanId = 8;
+
+        public static final int kArmCanId = 9;
     
         public static final boolean kGyroReversed = false;
       }
@@ -176,7 +181,15 @@ public class Constants {
         public static final double kTurnDeadband = 0.06;
       }
     
-      public static final class AutoConstants { 
+public static final class AutoConstants { 
+
+        
+  public final LED m_lED = new LED(Constants.LEDConstants.PWMPort, Constants.LEDConstants.LEDCount);
+  // public final Servo m_servo = new Servo(1);
+  public final Arm m_arm = new Arm();
+  public final DriveTrain m_driveTrain = new DriveTrain();
+
+    
         public static final double kDrivingP = .04;
         public static final double kDrivingI = 0;
         public static final double kDrivingD = 0;

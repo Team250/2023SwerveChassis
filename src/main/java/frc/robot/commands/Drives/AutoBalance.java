@@ -3,11 +3,16 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.LimeLight;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import frc.robot.Constants;
+import frc.robot.Constants.AutoConstants;
+import frc.robot.Constants.DriveConstants;
 
 public class AutoBalance extends CommandBase {
     private boolean isFinished = false;
     private final DriveTrain m_driveTrain;
+    private PIDController balanceController = new PIDController(AutoConstants.kDrivingP, AutoConstants.kDrivingI, AutoConstants.kDrivingD);
     
     public AutoBalance(DriveTrain subsystem) {
 
@@ -23,11 +28,7 @@ public class AutoBalance extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (m_driveTrain.onSlope()){
-            m_driveTrain.setDrive(m_driveTrain.getPitch(), 0, 0, true, false);
-            isFinished = true;
-            return;
-        }
+        m_driveTrain.setDrive(balanceController.calculate(m_driveTrain.getPitch(),0), 0, 0, true, false);
     }
 
 
@@ -40,7 +41,7 @@ public class AutoBalance extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return true;
+        return balanceController.atSetpoint();
     }
 
     @Override
