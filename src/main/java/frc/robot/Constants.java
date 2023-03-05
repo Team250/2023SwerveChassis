@@ -184,12 +184,6 @@ public class Constants {
     
 public static final class AutoConstants { 
 
-        
-  public final LED m_lED = new LED(Constants.LEDConstants.PWMPort, Constants.LEDConstants.LEDCount);
-  // public final Servo m_servo = new Servo(1);
-  public final Arm m_arm = new Arm();
-  public final DriveTrain m_driveTrain = new DriveTrain();
-
     
         public static final double kDrivingP = .04;
         public static final double kDrivingI = 0;
