@@ -9,6 +9,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.Constants.LimeLightConstants;
 import edu.wpi.first.cameraserver.CameraServer;
 import frc.robot.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj.DriverStation;
 import frc.common.math.MathUtils;
 
 public class LimeLight extends SubsystemBase {
@@ -20,8 +21,8 @@ public class LimeLight extends SubsystemBase {
   private NetworkTableEntry tv = table.getEntry("tv");
 
   private static final double Tag_Height = Units.inchesToMeters(26.5);
-  private static final double LL_Height = Units.inchesToMeters(17.5);
-  private static final double LL_Angle = Math.toRadians(34.0);
+  private static final double LL_Height = Units.inchesToMeters(LimeLightConstants.Height);
+  private static final double LL_Angle = Math.toRadians(LimeLightConstants.Angle);
   private static final double Tag_Error = Math.toRadians(2.5);
 
   private final DriveTrain m_drivetrain;
@@ -43,6 +44,18 @@ public class LimeLight extends SubsystemBase {
     CameraServer.startAutomaticCapture();
     CameraServer.getVideo();
     
+    if (DriverStation.getAlliance() == DriverStation.Alliance.Blue){
+      //blue tag pipeline
+      NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setInteger(0);
+    }
+    else if (DriverStation.getAlliance() == DriverStation.Alliance.Red){
+      //red tag pipeline
+      NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setInteger(1);  
+    }
+    else{
+      //all tag pipeline
+      NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setInteger(2);
+    }
     this.tx = table.getEntry("tx");
     this.ty = table.getEntry("ty");
     this.ta = table.getEntry("ta");
@@ -56,6 +69,10 @@ public class LimeLight extends SubsystemBase {
 
     double pitch = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     double yaw = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+
+    SmartDashboard.putBoolean("hasTarget", hasTarget);
+    SmartDashboard.putNumber("distance to target", distanceToTarget);
+    SmartDashboard.putNumber("angle to target", angleToTarget);
 
     theta = Math.toRadians(pitch) + LL_Angle;
     distanceToTarget = (Tag_Height - LL_Height) / Math.tan(theta);
@@ -128,12 +145,12 @@ public class LimeLight extends SubsystemBase {
 
   public double getHorazontalAngleOfError(){
     //+1 is a fudge factor cor camera mounting
-    return getTx().getDouble(0.0) + LimeLightConstants.HORAZONTAL_OFFSET;
+    return getTx().getDouble(0.0) + LimeLightConstants.Horizontal_Offset;
   }
 
   public double getVerticalAngleOfError(){
     //+1 is a fudge factor cor camera mounting
-    return getTy().getDouble(0.0) + LimeLightConstants.VERTICAL_OFFSET;
+    return getTy().getDouble(0.0) + LimeLightConstants.Height;
   }
 
 

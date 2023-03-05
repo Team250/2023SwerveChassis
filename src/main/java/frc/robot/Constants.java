@@ -19,6 +19,7 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import java.util.HashMap;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj.DriverStation;
 
 import com.pathplanner.lib.PathPlannerTrajectory.EventMarker;
 import com.pathplanner.lib.auto.PIDConstants;
@@ -43,8 +44,11 @@ public class Constants {
     */ 
 
     public static final class LimeLightConstants {
-      public static final double HORAZONTAL_OFFSET = 0;
-      public static final double VERTICAL_OFFSET = 0;
+      public static final double Angle = 0;
+      public static final double Height = 0;
+      public static final double Horizontal_Offset = 0;
+      public static final Number[] redTags = {1,2,3,5};
+      public static final Number[] blueTags = {4,6,7,8};
     }
 
     public static final class LEDConstants {
