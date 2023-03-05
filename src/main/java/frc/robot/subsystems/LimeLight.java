@@ -19,6 +19,7 @@ public class LimeLight extends SubsystemBase {
   private NetworkTableEntry ty = table.getEntry("ty");
   private NetworkTableEntry ta = table.getEntry("ta");
   private NetworkTableEntry tv = table.getEntry("tv");
+  double a = 1;
 
   private static final double Tag_Height = Units.inchesToMeters(26.5);
   private static final double LL_Height = Units.inchesToMeters(LimeLightConstants.Height);
