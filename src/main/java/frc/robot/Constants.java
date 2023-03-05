@@ -43,8 +43,9 @@ public class Constants {
     */ 
 
     public static final class LimeLightConstants {
-      public static final double HORAZONTAL_OFFSET = 0;
-      public static final double VERTICAL_OFFSET = 0;
+      public static final double Horizontal_Offset = 0;
+      public static final double Height = 0;
+      public static final double Angle = 0;
     }
 
     public static final class LEDConstants {
