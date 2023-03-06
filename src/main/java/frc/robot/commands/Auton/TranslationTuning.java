@@ -11,7 +11,7 @@
 // ROBOTBUILDER TYPE: Command.
 
 
-package frc.robot.commands.Autos;
+package frc.robot.commands.Auton;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.RobotContainer;

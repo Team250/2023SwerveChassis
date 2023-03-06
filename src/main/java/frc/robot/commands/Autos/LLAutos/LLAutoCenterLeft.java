@@ -10,7 +10,7 @@
 
 // ROBOTBUILDER TYPE: Command.
 
-package frc.robot.commands.LLAutos;
+package frc.robot.commands.Autos.LLAutos;
 import frc.robot.subsystems.LimeLight;
 import frc.robot.subsystems.ShuffleboardSub;
 import edu.wpi.first.math.MathUtil;
