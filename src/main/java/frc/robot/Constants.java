@@ -109,14 +109,16 @@ public class Constants {
     
         // SPARK MAX CAN IDs
         public static final int kFrontLeftDrivingCanId = 1;
-        public static final int kRearLeftDrivingCanId = 5;
-        public static final int kFrontRightDrivingCanId = 3;
-        public static final int kRearRightDrivingCanId = 7;
-    
         public static final int kFrontLeftTurningCanId = 2;
-        public static final int kRearLeftTurningCanId = 6;
+
+        public static final int kFrontRightDrivingCanId = 3;
         public static final int kFrontRightTurningCanId = 4;
-        public static final int kRearRightTurningCanId = 8;
+
+        public static final int kBackLeftDrivingCanId = 5;
+        public static final int kBackLeftTurningCanId = 6;
+
+        public static final int kBackRightDrivingCanId = 7;
+        public static final int kBackRightTurningCanId = 8;
 
         public static final int kArmCanId = 9;
     

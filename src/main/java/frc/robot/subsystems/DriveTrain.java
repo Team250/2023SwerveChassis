@@ -81,14 +81,14 @@ public class DriveTrain extends SubsystemBase {
       DriveConstants.kFrontRightTurningCanId,
       DriveConstants.kFrontRightChassisAngularOffset);
 
-  private final MaxSwerveModule m_rearLeft = new MaxSwerveModule(
-      DriveConstants.kRearLeftDrivingCanId,
-      DriveConstants.kRearLeftTurningCanId,
+  private final MaxSwerveModule m_backLeft = new MaxSwerveModule(
+      DriveConstants.kBackLeftDrivingCanId,
+      DriveConstants.kBackLeftTurningCanId,
       DriveConstants.kBackLeftChassisAngularOffset);
 
-  private final MaxSwerveModule m_rearRight = new MaxSwerveModule(
-      DriveConstants.kRearRightDrivingCanId,
-      DriveConstants.kRearRightTurningCanId,
+  private final MaxSwerveModule m_backRight = new MaxSwerveModule(
+      DriveConstants.kBackRightDrivingCanId,
+      DriveConstants.kBackRightTurningCanId,
       DriveConstants.kBackRightChassisAngularOffset);
 
 
@@ -114,8 +114,8 @@ public class DriveTrain extends SubsystemBase {
       new SwerveModulePosition[] {
           m_frontLeft.getPosition(),
           m_frontRight.getPosition(),
-          m_rearLeft.getPosition(),
-          m_rearRight.getPosition()
+          m_backLeft.getPosition(),
+          m_backRight.getPosition()
       });
   public Consumer<SwerveModuleState[]> setModuleStates;
 
@@ -152,8 +152,8 @@ public class DriveTrain extends SubsystemBase {
             new SwerveModulePosition[] {
                 m_frontLeft.getPosition(),
                 m_frontRight.getPosition(),
-                m_rearLeft.getPosition(),
-                m_rearRight.getPosition()
+                m_backLeft.getPosition(),
+                m_backRight.getPosition()
             });
         m_field.setRobotPose(m_odometry.getPoseMeters());
   
@@ -185,8 +185,8 @@ public class DriveTrain extends SubsystemBase {
         new SwerveModulePosition[] {
             m_frontLeft.getPosition(),
             m_frontRight.getPosition(),
-            m_rearLeft.getPosition(),
-            m_rearRight.getPosition()
+            m_backLeft.getPosition(),
+            m_backRight.getPosition()
         },
         pose);
   }
@@ -206,8 +206,8 @@ public class DriveTrain extends SubsystemBase {
   public void setX() {
     m_frontLeft.setDesiredState(new SwerveModuleState(0, Rotation2d.fromDegrees(45)));
     m_frontRight.setDesiredState(new SwerveModuleState(0, Rotation2d.fromDegrees(-45)));
-    m_rearLeft.setDesiredState(new SwerveModuleState(0, Rotation2d.fromDegrees(-45)));
-    m_rearRight.setDesiredState(new SwerveModuleState(0, Rotation2d.fromDegrees(45)));
+    m_backLeft.setDesiredState(new SwerveModuleState(0, Rotation2d.fromDegrees(-45)));
+    m_backRight.setDesiredState(new SwerveModuleState(0, Rotation2d.fromDegrees(45)));
   }
 
   /**
@@ -220,15 +220,15 @@ public class DriveTrain extends SubsystemBase {
         desiredStates, DriveConstants.kMaxSpeedMetersPerSecond);
     m_frontLeft.setDesiredState(desiredStates[0]);
     m_frontRight.setDesiredState(desiredStates[1]);
-    m_rearLeft.setDesiredState(desiredStates[2]);
-    m_rearRight.setDesiredState(desiredStates[3]);
+    m_backLeft.setDesiredState(desiredStates[2]);
+    m_backRight.setDesiredState(desiredStates[3]);
   }
   /** Resets the drive encoders to currently read a position of 0. */
   public void resetEncoders() {
     m_frontLeft.resetEncoders();
-    m_rearLeft.resetEncoders();
+    m_backLeft.resetEncoders();
     m_frontRight.resetEncoders();
-    m_rearRight.resetEncoders();
+    m_backRight.resetEncoders();
   }
 
   /** Zeroes the heading of the robot. */
@@ -353,8 +353,8 @@ public class DriveTrain extends SubsystemBase {
         swerveModuleStates, DriveConstants.kMaxSpeedMetersPerSecond);
     m_frontLeft.setDesiredState(swerveModuleStates[0]);
     m_frontRight.setDesiredState(swerveModuleStates[1]);
-    m_rearLeft.setDesiredState(swerveModuleStates[2]);
-    m_rearRight.setDesiredState(swerveModuleStates[3]);
+    m_backLeft.setDesiredState(swerveModuleStates[2]);
+    m_backRight.setDesiredState(swerveModuleStates[3]);
   }
 
   public boolean onSlope() {
